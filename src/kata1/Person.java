@@ -1,6 +1,7 @@
 package kata1;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Person {
 
@@ -16,12 +17,12 @@ public class Person {
         return surname;
     }
 
-    public Date getBirth() {
+    public Calendar getBirth() {
         return birth;
     }
-    private final Date birth;
+    private final Calendar birth;
 
-    public Person(String name, String surname, Date birth) {
+    public Person(String name, String surname, Calendar birth) {
         this.name = name;
         this.surname = surname;
         this.birth = birth;
@@ -32,9 +33,8 @@ public class Person {
     }
 
     public int getAge() {
-        Date today = new Date();
-
-        return (int) milliseconds(today.getTime() - birth.getTime());
+        Calendar today= GregorianCalendar.getInstance();
+        return (int) milliseconds(today.getTimeInMillis() - birth.getTimeInMillis());
     }
 
     private long milliseconds(long millis) {
